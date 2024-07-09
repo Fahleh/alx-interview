@@ -18,8 +18,6 @@ def minOperations(n):
             num_of_ops += base_num
             # set n to the remainder
             n //= base_num
-            # reduce base_num to find remaining smaller vals that evenly-divide n
-            # base_num -= 1
         # If base_num is not a factor, increment it until it becomes one.
         base_num += 1
     return num_of_ops
