@@ -1,16 +1,14 @@
 #!/usr/bin/python3
-
 import sys
 import signal
 
 
 def custom_print(dict_sc, total_file_size):
     """Method for printing in a particular format."""
-
     print(f"File size: {total_file_size}")
-    for key, val in sorted(dict_sc.items()):
-        if val != 0:
-            print(f"{key}: {val}")
+    for key, value in sorted(dict_sc.items()):
+        if value != 0:
+            print(f"{key}: {value}")
 
 
 def handle_signal(sig, frame):
