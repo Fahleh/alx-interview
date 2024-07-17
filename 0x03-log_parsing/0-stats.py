@@ -18,10 +18,10 @@ def handle_signal(sig, frame):
     custom_print(status_dict, SIZE)
     sys.exit(0)
 
+
 signal.signal(signal.SIGINT, handle_signal)
 
 SIZE = 0
-# CODE = 0
 COUNT = 0
 status_dict = {"200": 0,
                "301": 0,
