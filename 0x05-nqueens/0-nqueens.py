@@ -1,60 +1,44 @@
 #!/usr/bin/python3
-"""Solving N Queens Problem using backtracking"""
+""" N queens """
 import sys
 
 
-def show_result(board, n):
-    """Prints the result of the algorithm"""
-    result = []
+if len(sys.argv) > 2 or len(sys.argv) < 2:
+    print("Usage: nqueens N")
+    exit(1)
 
-    for r in range(n):
-        for c in range(n):
-            if c == board[r]:
-                result.append([r, c])
-    print(result)
+if not sys.argv[1].isdigit():
+    print("N must be a number")
+    exit(1)
 
+if int(sys.argv[1]) < 4:
+    print("N must be at least 4")
+    exit(1)
 
-def queen_safe(board, r, c, row):
-    """
-    Checks if the queen is safe in the current position
-    """
-    return board[r] in (c, c - r + row, r - row + c)
+n = int(sys.argv[1])
 
 
-def find_positions(board, row, n):
-    """
-    Finds spaces where the queen can be allocated
-    """
-    if row == n:
-        show_result(board, n)
-
+def queens(n, i=0, a=[], b=[], c=[]):
+    """ find possible positions """
+    if i < n:
+        for j in range(n):
+            if j not in a and i + j not in b and i - j not in c:
+                yield from queens(n, i + 1, a + [j], b + [i + j], c + [i - j])
     else:
-        for c in range(n):
-            is_free = True
-            for r in range(row):
-                if queen_safe(board, r, c, row):
-                    is_free = False
-            if is_free:
-                board[row] = c
-                find_positions(board, row + 1, n)
+        yield a
 
 
-def initialize_board(size):
-    """Initializes a new board"""
-    return [0 * size for i in range(size)]
+def solve(n):
+    """ solve """
+    k = []
+    i = 0
+    for solution in queens(n, 0):
+        for s in solution:
+            k.append([i, s])
+            i += 1
+        print(k)
+        k = []
+        i = 0
 
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: nqueens N\n")
-        sys.exit(1)
-    if sys.argv[1].isdigit() is False:
-        print("N must be a number\n")
-        sys.exit(1)
-    if int(sys.argv[1]) < 4:
-        print("N must be at least 4\n")
-        sys.exit(1)
-
-    num = int(sys.argv[1])
-    board = initialize_board(num)
-    solutions = find_positions(board, 0, num)
+solve(n)
