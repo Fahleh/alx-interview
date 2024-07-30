@@ -46,15 +46,15 @@ def initialize_board(size):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: nqueens N")
+        print("Usage: nqueens N\n")
         sys.exit(1)
     if sys.argv[1].isdigit() is False:
-        print("N must be a number")
+        print("N must be a number\n")
         sys.exit(1)
     if int(sys.argv[1]) < 4:
-        print("N must be at least 4")
+        print("N must be at least 4\n")
         sys.exit(1)
 
-    N = int(sys.argv[1])
+    num = int(sys.argv[1])
     board = initialize_board(N)
-    solutions = find_positions(board, 0, N)
+    solutions = find_positions(board, 0, num)
