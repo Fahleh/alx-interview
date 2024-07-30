@@ -56,5 +56,5 @@ if __name__ == "__main__":
         sys.exit(1)
 
     num = int(sys.argv[1])
-    board = initialize_board(N)
+    board = initialize_board(num)
     solutions = find_positions(board, 0, num)
