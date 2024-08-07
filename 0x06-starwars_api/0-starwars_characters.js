@@ -1,6 +1,6 @@
 #!/usr/bin/node
-const request = require("request");
-const BASE_URL = "https://swapi-api.hbtn.io/api";
+const request = require('request');
+const BASE_URL = 'https://swapi-api.hbtn.io/api';
 const ARGS = process.argv;
 
 if (ARGS.length > 2) {
@@ -23,7 +23,7 @@ if (ARGS.length > 2) {
     );
 
     Promise.all(characters)
-      .then((character) => console.log(character.join("\n")))
+      .then((character) => console.log(character.join('\n')))
       .catch((allErr) => console.log(allErr));
   });
 }
