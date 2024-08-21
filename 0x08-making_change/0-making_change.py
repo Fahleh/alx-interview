@@ -13,11 +13,18 @@ def makeChange(coins, total):
     if not coins:
         return -1
 
-    coins_needed = [float('inf')] * (total + 1)
-    coins_needed[0] = 0
+    balance = total
+    count = 0
+    index = 0
+    change = sorted(coins, reverse=True)
+    n = len(coins)
 
-    for coin in coins:
-        for i in range(coin, total + 1):
-            coins_needed[i] = min(coins_needed[i], coins_needed[i - coin] + 1)
-
-    return coins_needed[total] if coins_needed[total] != float('inf') else -1
+    while balance > 0:
+        if index >= n:
+            return -1
+        if balance - change[index] >= 0:
+            balance -= change[index]
+            count += 1
+        else:
+            index += 1
+    return count
