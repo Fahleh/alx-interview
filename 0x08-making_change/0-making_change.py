@@ -1,21 +1,24 @@
+#!/usr/bin/python3
 def makeChange(coins, total):
     """
     Given a pile of coins of different values,
     Returns: 
       : Fewest number of coins needed to meet total.
       : 0 If total is 0 or less.
-      : -1 if total cannot be met by any number of coins you have.
+      : -1 if otal cannot be met by any number of coins you have.
 
     """
-    if not coins:
-        return -1
     if total <= 0:
         return 0
-    count = 0
-    coins = sorted(coins)[::-1]
+
+    if not coins:
+        return -1
+
+    coins_needed = [float('inf')] * (total + 1)
+    coins_needed[0] = 0
+
     for coin in coins:
-        while coin <= total:
-            total -= coin
-            count += 1
-        return count
-    return -1
+        for i in range(coin, total + 1):
+            coins_needed[i] = min(coins_needed[i], coins_needed[i - coin] + 1)
+
+    return coins_needed[total] if coins_needed[total] != float('inf') else -1
