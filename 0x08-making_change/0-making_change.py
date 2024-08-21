@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+Module for make change function
+"""
+
+
 def makeChange(coins, total):
     """
     Given a pile of coins of different values,
