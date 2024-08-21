@@ -1,4 +1,4 @@
-def makecount(coins, total):
+def makeChange(coins, total):
     """
     Given a pile of coins of different values,
     Returns: 
@@ -17,6 +17,5 @@ def makecount(coins, total):
         while coin <= total:
             total -= coin
             count += 1
-        if (total == 0):
-            return count
+        return count
     return -1
