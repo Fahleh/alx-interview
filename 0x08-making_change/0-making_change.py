@@ -8,7 +8,7 @@ Module for make change function
 def makeChange(coins, total):
     """
     Given a pile of coins of different values,
-    Returns: 
+    Returns:
       : Fewest number of coins needed to meet total.
       : 0 If total is 0 or less.
       : -1 if otal cannot be met by any number of coins you have.
