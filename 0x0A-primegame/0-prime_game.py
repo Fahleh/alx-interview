@@ -4,7 +4,7 @@
 
 def isWinner(x, nums):
     """
-    x-rounds
+    Returns the name of the player that won the most rounds
     """
     if x <= 0 or nums is None:
         return None
@@ -33,7 +33,7 @@ def isWinner(x, nums):
 
 def rm_multiples(ls, x):
     """
-    RRemoves prime multiples
+    Removes prime multiples
     """
     for i in range(2, len(ls)):
         try:
